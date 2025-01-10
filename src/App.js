@@ -23,7 +23,7 @@ const App = () => {
           />
           <Route path="/register" element={<Register />} />
           <Route
-            path="/patient"
+            path="/patiegint"
             element={userRole === "patient" ? <PatientDashboard /> : <h2>Access Denied</h2>}
           />
           <Route
