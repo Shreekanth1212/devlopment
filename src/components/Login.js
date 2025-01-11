@@ -1,21 +1,22 @@
 import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const Login = ({ setUserRole }) => {
+const Login = ({ onLogin }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   const handleLogin = () => {
     // Simulated authentication (replace with actual logic)
-    const users = JSON.parse(localStorage.getItem("users")) || [];
-    const user = users.find(
-      (u) => u.username === username && u.password === password
-    );
-
-    if (user) {
-      setUserRole(user.role);
-      navigate(`/${user.role}`);
+    if (username === "patient" && password === "password") {
+      onLogin("patient", username);
+      navigate("/patient");
+    } else if (username === "doctor" && password === "password") {
+      onLogin("doctor", username);
+      navigate("/doctor");
+    } else if (username === "admin" && password === "password") {
+      onLogin("admin", username);
+      navigate("/admin");
     } else {
       alert("Invalid credentials!");
     }
@@ -37,9 +38,6 @@ const Login = ({ setUserRole }) => {
         onChange={(e) => setPassword(e.target.value)}
       />
       <button onClick={handleLogin}>Login</button>
-      <p>
-        New user? <Link to="/register">Register here</Link>
-      </p>
     </div>
   );
 };

@@ -9,6 +9,13 @@ import "./styles.css";
 
 const App = () => {
   const [userRole, setUserRole] = useState(null);
+  const [patients, setPatients] = useState([]); // Shared patient data
+  const [loggedUsers, setLoggedUsers] = useState([]); // Track logged-in users
+
+  const handleUserLogin = (role, username) => {
+    setUserRole(role);
+    setLoggedUsers((prev) => [...prev, { username, role }]); // Add user to logged-in list
+  };
 
   return (
     <Router>
@@ -17,22 +24,37 @@ const App = () => {
           <Link to="/">Login</Link> | <Link to="/register">Register</Link>
         </nav>
         <Routes>
-          <Route
-            path="/"
-            element={<Login setUserRole={setUserRole} />}
-          />
+          <Route path="/" element={<Login onLogin={handleUserLogin} />} />
           <Route path="/register" element={<Register />} />
           <Route
-            path="/patiegint"
-            element={userRole === "patient" ? <PatientDashboard /> : <h2>Access Denied</h2>}
+            path="/patient"
+            element={
+              userRole === "patient" ? (
+                <PatientDashboard patients={patients} setPatients={setPatients} />
+              ) : (
+                <h2>Access Denied</h2>
+              )
+            }
           />
           <Route
             path="/doctor"
-            element={userRole === "doctor" ? <DoctorDashboard /> : <h2>Access Denied</h2>}
+            element={
+              userRole === "doctor" ? (
+                <DoctorDashboard patients={patients} setPatients={setPatients} />
+              ) : (
+                <h2>Access Denied</h2>
+              )
+            }
           />
           <Route
             path="/admin"
-            element={userRole === "admin" ? <AdminDashboard /> : <h2>Access Denied</h2>}
+            element={
+              userRole === "admin" ? (
+                <AdminDashboard patients={patients} loggedUsers={loggedUsers} />
+              ) : (
+                <h2>Access Denied</h2>
+              )
+            }
           />
         </Routes>
       </div>

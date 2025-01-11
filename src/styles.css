@@ -1,67 +1,268 @@
-/* src/styles.css */
-
+/* General Body Styling */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4;
+  background-color: #f9f9f9;
+  color: #333;
 }
 
+/* General Container */
 .container {
   width: 90%;
-  max-width: 400px;
-  margin: 50px auto;
+  max-width: 800px;
+  margin: 20px auto;
   padding: 20px;
   background-color: #ffffff;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Navigation Bar */
+nav {
+  background-color: #007bff;
+  padding: 10px 0;
+  text-align: center;
+}
+
+nav a {
+  color: #ffffff;
+  margin: 0 15px;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Page Headings */
+h1, h2, h3 {
+  text-align: center;
+  color: #007bff;
+}
+
+h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
 }
 
 h2 {
-  text-align: center;
-  color: #333333;
-  margin-bottom: 20px;
+  font-size: 28px;
+  margin-bottom: 15px;
 }
 
-input,
-select {
+h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+/* Input Fields */
+input {
   display: block;
   width: 100%;
   padding: 10px;
   margin: 10px 0;
-  border: 1px solid #cccccc;
-  border-radius: 4px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
   font-size: 16px;
 }
 
+input:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Buttons */
 button {
   display: block;
   width: 100%;
   padding: 10px;
+  margin-top: 10px;
   background-color: #007bff;
   color: #ffffff;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
-  margin-top: 10px;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
   background-color: #0056b3;
 }
 
+/* Table Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Section for Medical Details or Feedback */
+.details-section {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f7f9fc;
+  border: 1px solid #e2e6ea;
+  border-radius: 8px;
+}
+
+.details-section p {
+  margin: 5px 0;
+  font-size: 16px;
+  color: #555;
+}
+
+.details-section strong {
+  color: #333;
+}
+
+/* Admin Dashboard List */
+.list-item {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin: 10px 0;
+  background-color: #ffffff;
+}
+
+.list-item:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .container {
+    width: 95%;
+    padding: 15px;
+  }
+
+  input, button {
+    font-size: 14px;
+  }
+
+  nav a {
+    font-size: 16px;
+  }
+}
+/* Styling for the Name column specifically */
+.data-table td:nth-child(2), .data-table th:nth-child(2) {
+  width: 20%;  /* Increase width of the Name column */
+  padding-left: 15px;  /* Add left padding for better spacing */
+}
+
+/* Optional: Adjust other columns' widths if necessary */
+.data-table td:nth-child(3), .data-table th:nth-child(3) {
+  width: 12%;  /* Adjust width of the Age column, for example */
+}
+
+.data-table td:nth-child(4), .data-table th:nth-child(4) {
+  width: 10%;  /* Adjust width of the Sex column */
+}
+
+.data-table td:nth-child(5), .data-table th:nth-child(5) {
+  width: 15%;  /* Adjust width of the Sickness column */
+}
+
+/* Ensure all input fields have enough space inside the cells */
+td input {
+  width: 100%;
+}
+/* General container styling */
+.container {
+  width: 80%;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Header styling */
+h2 {
+  text-align: center;
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Table styling */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+/* Table header styling */
+.data-table thead {
+  background-color: #007bff;
+  color: white;
+  text-align: left;
+  padding: 10px;
+}
+
+.data-table th, .data-table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+}
+
+/* Table body styling */
+.data-table tbody tr {
+  transition: background-color 0.3s ease;
+}
+
+.data-table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Input fields styling */
+input[type="text"], input[type="number"] {
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+/* Placeholder text styling */
+input::placeholder {
+  color: #888;
+}
+
+/* Space around the inputs */
+td input {
+  width: 100%;
+}
+
+/* No appointments message styling */
 p {
   text-align: center;
-  color: #666666;
-  margin-top: 15px;
-}
-
-p a {
-  color: #007bff;
-  text-decoration: none;
-}
-
-p a:hover {
-  text-decoration: underline;
+  font-size: 18px;
+  color: #666;
+  margin-top: 20px;
 }
