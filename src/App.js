@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Login from "./components/Login";
 import Register from "./components/Register";
@@ -11,6 +11,19 @@ const App = () => {
   const [userRole, setUserRole] = useState(null);
   const [patients, setPatients] = useState([]); // Shared patient data
   const [loggedUsers, setLoggedUsers] = useState([]); // Track logged-in users
+
+  // Load patient data from localStorage when the app loads
+  useEffect(() => {
+    const savedPatients = JSON.parse(localStorage.getItem("patients")) || [];
+    setPatients(savedPatients);
+  }, []);
+
+  // Save patient data to localStorage whenever it changes
+  useEffect(() => {
+    if (patients.length > 0) {
+      localStorage.setItem("patients", JSON.stringify(patients));
+    }
+  }, [patients]);
 
   const handleUserLogin = (role, username) => {
     setUserRole(role);

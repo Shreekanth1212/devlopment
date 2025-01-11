@@ -24,6 +24,7 @@ const PatientDashboard = ({ patients, setPatients }) => {
     setCurrentPatient(newPatient); // Set the current patient for viewing details
     alert("Appointment booked successfully!");
     setFormData({ id: "", name: "", age: "", sex: "", sickness: "", date: "" });
+    
   };
 
   return (
