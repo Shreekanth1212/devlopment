@@ -7,18 +7,21 @@ const Login = ({ onLogin }) => {
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    // Simulated authentication (replace with actual logic)
-    if (username === "patient" && password === "password") {
-      onLogin("patient", username);
-      navigate("/patient");
-    } else if (username === "doctor" && password === "password") {
-      onLogin("doctor", username);
-      navigate("/doctor");
-    } else if (username === "admin" && password === "password") {
-      onLogin("admin", username);
-      navigate("/admin");
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+
+    // Check if the user exists
+    const user = users.find(
+      (u) => u.username === username && u.password === password
+    );
+
+    if (user) {
+      onLogin(user.role, username);
+      if (user.role === "patient") navigate("/patient");
+      else if (user.role === "doctor") navigate("/doctor");
+      else if (user.role === "admin") navigate("/admin");
     } else {
-      alert("Invalid credentials!");
+      alert("User not found or invalid credentials. Please register first.");
+      navigate("/register"); // Redirect to register page
     }
   };
 

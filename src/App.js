@@ -32,7 +32,7 @@ const App = () => {
               userRole === "patient" ? (
                 <PatientDashboard patients={patients} setPatients={setPatients} />
               ) : (
-                <h2>Access Denied</h2>
+                <h2>Access Denied. Please log in as a patient.</h2>
               )
             }
           />
@@ -42,7 +42,7 @@ const App = () => {
               userRole === "doctor" ? (
                 <DoctorDashboard patients={patients} setPatients={setPatients} />
               ) : (
-                <h2>Access Denied</h2>
+                <h2>Access Denied. Please log in as a doctor.</h2>
               )
             }
           />
@@ -52,7 +52,7 @@ const App = () => {
               userRole === "admin" ? (
                 <AdminDashboard patients={patients} loggedUsers={loggedUsers} />
               ) : (
-                <h2>Access Denied</h2>
+                <h2>Access Denied. Please log in as an admin.</h2>
               )
             }
           />

@@ -8,8 +8,8 @@ const Register = () => {
   const navigate = useNavigate();
 
   const handleRegister = () => {
-    // Simulated registration (replace with backend logic)
     const users = JSON.parse(localStorage.getItem("users")) || [];
+    // Check if the username already exists
     if (users.find((u) => u.username === username)) {
       alert("Username already exists!");
       return;
@@ -19,7 +19,7 @@ const Register = () => {
     users.push(newUser);
     localStorage.setItem("users", JSON.stringify(users));
     alert("Registration successful! Please login.");
-    navigate("/");
+    navigate("/"); // Redirect to login page
   };
 
   return (
